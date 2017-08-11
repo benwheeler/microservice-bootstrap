@@ -20,13 +20,13 @@ import play.api.GlobalSettings
 import play.api.mvc.{RequestHeader, Result}
 import uk.gov.hmrc.http.{JsValidationException, NotFoundException}
 import uk.gov.hmrc.play.HeaderCarrierConverter
-import uk.gov.hmrc.play.audit.EventTypes._
 import uk.gov.hmrc.play.audit.http.connector.AuditConnector
 
 import scala.concurrent.Future
 
 trait ErrorAuditingSettings extends GlobalSettings with HttpAuditEvent {
   import scala.concurrent.ExecutionContext.Implicits.global
+  import EventTypes._
 
   def auditConnector: AuditConnector
 

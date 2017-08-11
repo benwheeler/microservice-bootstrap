@@ -28,7 +28,7 @@ import org.scalatest.{Matchers, WordSpecLike}
 import play.api.test.Helpers._
 import play.api.test.{FakeApplication, FakeRequest}
 import uk.gov.hmrc.http.HeaderCarrier
-import uk.gov.hmrc.play.audit.EventTypes
+import uk.gov.hmrc.play.microservice.config.EventTypes
 import uk.gov.hmrc.play.audit.http.connector.AuditConnector
 import uk.gov.hmrc.play.audit.http.connector.AuditResult.Success
 import uk.gov.hmrc.play.audit.model.DataEvent
@@ -72,7 +72,7 @@ class AuditFilterSpec extends WordSpecLike with Matchers with Eventually with Sc
 
       val result = await(auditFilter.apply(nextAction)(request).run)
 
-      await(result.body.dataStream.runForeach({ i => }))
+      await(result.body.dataStream.runForeach({ _ => }))
 
       eventually {
         val captor = ArgumentCaptor.forClass(classOf[DataEvent])
